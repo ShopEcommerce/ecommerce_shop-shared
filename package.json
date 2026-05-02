@@ -1,0 +1,38 @@
+{
+  "name": "@teleshop/common",
+  "version": "1.0.0",
+  "description": "Shared library for Ecommerce Shop microservices",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "microservices",
+    "shared",
+    "teleshop"
+  ],
+  "author": "The Everything Shop",
+  "license": "MIT",
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "express": "^5.0.0",
+    "express-validator": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "pino": "^8.16.2"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  }
+}
