@@ -29,22 +29,25 @@ export const currentUser = (
   _res: Response,
   next: NextFunction
 ) => {
+  let token;
+
   const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
+  } 
+  else if ((req as any).session && (req as any).session.jwt) {
+    token = (req as any).session.jwt;
+  }
+
+  if (!token) {
     return next();
   }
 
   try {
-    const token = authHeader.split(' ')[1];
-
-    if (!token) {
-      return next();
-    }
-
     const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
-
     req.currentUser = decoded;
+    
     next();
   } catch (error) {
     logger.warn({
