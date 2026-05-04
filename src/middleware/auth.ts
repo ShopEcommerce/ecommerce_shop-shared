@@ -13,7 +13,17 @@ if (!JWT_SECRET) {
 }
 
 export interface JwtPayload extends JwtPayloadType {
+  id: string;
+  email: string;
   role: 'ADMIN' | 'SELLER' | 'CUSTOMER';
+}
+
+interface SessionWithJwt {
+  jwt?: string;
+}
+
+interface RequestWithSession extends Request {
+  session?: SessionWithJwt;
 }
 
 declare global {
@@ -29,6 +39,7 @@ export const currentUser = (
   _res: Response,
   next: NextFunction
 ) => {
+  const request = req as RequestWithSession;
   let token;
 
   const authHeader = req.headers.authorization;
@@ -36,8 +47,8 @@ export const currentUser = (
   if (authHeader && authHeader.startsWith('Bearer ')) {
     token = authHeader.split(' ')[1];
   } 
-  else if ((req as any).session && (req as any).session.jwt) {
-    token = (req as any).session.jwt;
+  else if (request.session?.jwt) {
+    token = request.session.jwt;
   }
 
   if (!token) {
