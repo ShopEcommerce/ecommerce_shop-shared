@@ -17,7 +17,16 @@ export abstract class BasePublisher<T extends Event> {
       try {
         await this.channel.assertExchange(this.subject, 'fanout', { durable: true });
         const payload = Buffer.from(JSON.stringify(data));
-        this.channel.publish(this.subject, '', payload, { persistent: true });
+        this.channel.publish(this.subject, '', payload, {
+          persistent: true,
+          contentType: 'application/json',
+          messageId: data.id,
+          timestamp: Date.now(),
+          headers: {
+            'x-correlation-id': data.correlationId ?? data.id,
+            'x-event-version': data.version,
+          },
+        });
 
         logger.info(`[x] Event published: ${this.subject}`);
         resolve();
