@@ -1,10 +1,5 @@
 import { Subjects } from './subjects';
-
-export interface BaseEventData {
-  id: string;          // Message ID 
-  timestamp: string;   
-  version: number;     // Event version
-}
+import { BaseEventData } from './baseEvent';
 
 // 1. Auth Events
 export interface UserRegisteredEvent {
