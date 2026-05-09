@@ -3,6 +3,7 @@ export enum Subjects {
   UserRegistered = 'user.registered',
   UserLogin = 'user.login',
   UserLogout = 'user.logout',
+  UserPasswordResetRequested = 'user.password_reset_requested',
 
   // Account
   ProfileUpdated = 'profile.updated',
@@ -26,5 +27,10 @@ export enum Subjects {
   PaymentInitiated = 'payment.initiated',
   PaymentSuccess = 'payment.success',
   PaymentFailed = 'payment.failed',
-  RefundCompleted = 'refund.completed'
+  PaymentCompleted = 'payment.completed',
+  RefundCompleted = 'refund.completed',
+
+  // Review
+  ReviewCreated = 'review.created',
+  ReviewDeleted = 'review.deleted',
 }
