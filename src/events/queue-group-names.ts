@@ -1,4 +1,5 @@
 export enum QueueGroupNames {
+  CartService = 'cart-service',
   AccountService = 'account-service',
   CatalogService = 'catalog-service', 
   OrderService = 'order-service',
