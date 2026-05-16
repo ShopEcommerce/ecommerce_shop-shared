@@ -1,6 +1,7 @@
 export enum Subjects {
   // Auth
   UserRegistered = 'user.registered',
+  UserVerified = 'user.verified',
   UserLogin = 'user.login',
   UserLogout = 'user.logout',
   UserPasswordResetRequested = 'user.password_reset_requested',
@@ -14,6 +15,7 @@ export enum Subjects {
   InventoryReserved = 'inventory.reserved',
   InventoryReservationFailed = 'inventory.reservation_failed',
   InventoryRestored = 'inventory.restored',
+  InventoryFailed = 'inventory.failed',
   
   // Cart 
   CartCheckout = 'cart.checkout',
@@ -22,6 +24,8 @@ export enum Subjects {
   OrderCreated = 'order.created',
   OrderConfirmed = 'order.confirmed',
   OrderCancelled = 'order.cancelled',
+  OrderCompleted = 'order.completed',
+  OrderUpdated = 'order.updated',
   
   // Payment
   PaymentInitiated = 'payment.initiated',

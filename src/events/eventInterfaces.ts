@@ -8,6 +8,16 @@ export interface UserRegisteredEvent {
     userId: string;
     email: string;
     role: 'ADMIN' | 'SELLER' | 'CUSTOMER';
+    verificationToken: string;
+  };
+}
+
+export interface UserVerifiedEvent {
+  subject: Subjects.UserVerified;
+  data: BaseEventData & {
+    userId: string;
+    email: string;
+    role: 'ADMIN' | 'SELLER' | 'CUSTOMER';
   };
 }
 
@@ -24,6 +34,15 @@ export interface UserLogoutEvent {
   data: BaseEventData & {
     userId: string;
     email: string;
+  };
+}
+
+export interface UserPasswordResetRequestedEvent {
+  subject: Subjects.UserPasswordResetRequested;
+  data: BaseEventData & {
+    userId: string;
+    email: string;
+    resetToken: string;
   };
 }
 
