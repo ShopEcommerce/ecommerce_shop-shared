@@ -20,3 +20,6 @@ Thumbs.db
 
 # IDE settings 
 .vscode/
+
+# Package manager cache
+.npm-cache/
